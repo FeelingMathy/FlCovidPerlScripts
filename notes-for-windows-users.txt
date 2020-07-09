@@ -1,5 +1,15 @@
 Notes for Windows users
 
+WHAT IS THIS?
+=============
+
+These scripts (3 .pl executables and 3 .pm modules) will read any number of
+case line data .csv files and produce 2 new .csv files for each date with a
+unified set of column names.
+
+Note that this code NEVER modifies any of the source files it acts on.
+It creates two new files for each date and you may change what they are named.
+
 PREREQUSITES
 ============
 
@@ -44,36 +54,38 @@ USE
 
 1) Open a console window in FlCovidPerlScripts.
 
-Edit global_definitions.pm using whatever. It's a small file.
-Read the comments and change as needed.
+2) Edit global_definitions.pm using whatever. It's a small file.
+   Read the comments and change as needed.
 
-IMPORTANT: Pay particular attion to $record_debug_limit_value at the
-bottom of the file.
+   IMPORTANT: Pay particular attion to $record_debug_limit_value at the
+   bottom of the file. AS CONFIGURED, THE MAKE_NEW_FILES.PL SCRIPT WILL
+   ONLY PROCESS 5 LINES FROM EACH FILE.
 
-2) Open a console window in the directory that contains all of your
-case line data files. It's assumed there is one subdirectory for each date.
+3) Open a console window in the directory that contains all of your
+   case line data files. It's assumed there is one subdirectory for each date.
 
-Issue the command:
+   Issue the command:
 
-   $ dir /b 2020* > dirs.txt
+      $ ls -d 2020* > dirs.txt
 
-Hopefully, dirs.txt will look like:
+   Hopefully, dirs.txt will look like:
 
-   2020-03-16
-   2020-03-17
-   2020-03-18
-   2020-03-19
-   etc.
+      2020-03-16
+      2020-03-17
+      2020-03-18
+      2020-03-19
+      etc.
 
-If it doesn't, we need to discuss and fix something before proceeding.
+   If it doesn't, we need to discuss and fix something before proceeding.
 
+   4) Go back to FlCovidPerlScripts
 
-3) Go back to FlCovidPerlScripts
+   Issue the command:
 
-Issue the command:
+      $ perl make_header.pl
 
-   $ perl make_header.pl
-
+Possible perl error
+-------------------
 When running a perl script for the first time, you may get a message like:
 
   Can't locate File/chdir.pm in @INC (you may need to install the
