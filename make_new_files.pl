@@ -31,10 +31,9 @@ package main;
 
 #
 # Debug stuff
-# Set to -1 to disable
+# Set to -1 to disable. See global_definitions.pm
 #
-my $file_debug_limit = -1;
-my $record_debug_limit = 5;
+my $record_debug_limit = $global_definitions::record_debug_limit_value;
 
 my $cwd = Cwd::cwd();
 my $windows_flag = 0;
@@ -74,12 +73,6 @@ if (open (FILE, "<", 'dirs.txt')) {
 }
 close (FILE);
 
-if ($file_debug_limit > 0) {
-    undef (@fq_all_dirs_by_date);
-    push (@fq_all_dirs_by_date, "$dir/2020-03-19");
-    push (@fq_all_dirs_by_date, "$dir/2020-03-24");
-}
-
 #
 # For each directory, process all the .csv files
 #
@@ -92,16 +85,6 @@ foreach my $fq_dir (@fq_all_dirs_by_date) {
     # Start the output file with the combined column names
     #
     my @raw_new_file = $unified_name_string;
-
-    #
-    # See top of file
-    #
-    if ($file_debug_limit == 0) {
-        last;
-    }
-    elsif ($file_debug_limit > 0) {
-        $file_debug_limit--;
-    }
 
     #
     # Make a list of all the .csv files in the $fq_dir. As (if) the first one

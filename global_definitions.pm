@@ -30,3 +30,13 @@ our $column_name_output_file = 'unified_column_names.csv';
 #
 our $NF_csv_file_name = 'new_file.csv';
 our $NF_normalized_csv_file_name = 'normalized_new_file.csv';
+
+#
+# For evaluation purposes, set this parameter to something like 5.
+# This will cause only the 1st 5 lines of each data .csv file to be
+# processed. That's enough to see if it works and what it does without
+# having to wade through a Gigabyte-plus of data.
+#
+# For actual use, set it to -1
+#
+our $record_debug_limit_value = 5;
