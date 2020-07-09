@@ -1,0 +1,27 @@
+When running a perl script for the first time, you may get a message like:
+
+  Can't locate File/chdir.pm in @INC (you may need to install the
+  File::chdir module) (@INC contains: /usr/local/lib64/perl5
+  /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl
+  /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5)
+  at make_header.pl line 16.
+
+This means that (in this case), the perl module File::chdir
+is missing from your perl installation.
+
+For Windows:
+
+   cpanm File::chdir
+
+For Linux:
+
+   yum <whatever goes here for your system>
+
+The cpanm tool will go find the missing script and install it
+This is part of perl. It will not affect anything else on your system.
+
+On my vanilla CentOS system, I had to install
+
+   DateTime
+   File::chdir
+
